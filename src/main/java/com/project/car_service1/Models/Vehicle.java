@@ -13,7 +13,7 @@ public class Vehicle implements java.io.Serializable {
     public String number;
     public String nick;
     public String brand;
-    public String model;
+    public String type;
     public int year_issue;
     public String category;
 
@@ -25,7 +25,7 @@ public class Vehicle implements java.io.Serializable {
         this.number = number;
         this.nick = nick;
         this.brand = brand;
-        this.model = model;
+        this.type = model;
         this.year_issue = year_issue;
         this.category = category;
     }
@@ -33,14 +33,14 @@ public class Vehicle implements java.io.Serializable {
     public Vehicle(String number, String brand, String model) {
         this.number = number;
         this.brand = brand;
-        this.model = model;
+        this.type = model;
     }
 
     public Vehicle(String number, String nick, String brand, String model, int year_issue, String category) {
         this.number = number;
         this.nick = nick;
         this.brand = brand;
-        this.model = model;
+        this.type = model;
         this.year_issue = year_issue;
         this.category = category;
     }
@@ -77,12 +77,12 @@ public class Vehicle implements java.io.Serializable {
         this.brand = brand;
     }
 
-    public String getModel() {
-        return model;
+    public String getType() {
+        return type;
     }
 
-    public void setModel(String model) {
-        this.model = model;
+    public void setType(String model) {
+        this.type = model;
     }
 
     public int getYear_issue() {

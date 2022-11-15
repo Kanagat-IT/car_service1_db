@@ -1,10 +1,12 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title th:text="${page}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <h1>Kanagat Saparbek</h1>
+<div th:each="el : ${vehicles}">
+    <h3 th:text="${el.brand} +' '+ ${el.type}"/>
+</div>
 </body>
 </html>
