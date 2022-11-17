@@ -1,5 +1,7 @@
 package com.project.car_service1.Models;
 
+import com.fasterxml.jackson.databind.annotation.JsonValueInstantiator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

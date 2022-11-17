@@ -3,6 +3,7 @@ package com.project.car_service1.Controllers;
 import com.project.car_service1.Models.Vehicle;
 import com.project.car_service1.Repo.VehicleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,20 +13,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@Controller
 public class VehicleController {
     @Autowired
     private VehicleRepo vehicleRepo;
 
     @GetMapping("/car")
-    public String blog(Model model){
+    public String vehicle(Model model){
         Iterable<Vehicle> vehicles = vehicleRepo.findAll();
-        model.addAttribute("posts", vehicles);
+        model.addAttribute("vehicle", vehicles);
         return "vehicle-list";
     }
 
     @GetMapping("/add/vehicle")
     public String vehicleAdd(Model model) {
-        return "vehicle-add";
+        return "vehicle_add";
     }
 
     @PostMapping("/add/vehicle")
@@ -37,17 +39,17 @@ public class VehicleController {
         return "redirect:/car";
     }
 
-    @GetMapping("/car/{vin}")
-    public String blogDetail (@PathVariable(value = "vin")int vin, Model model){
-        Optional<Vehicle> vehicle = vehicleRepo.findById(vin);
-        ArrayList<Vehicle> res = new ArrayList<>();
-        vehicle.ifPresent(res::add);
-        model.addAttribute("vehicle", res);
-        return "car-detail";
-    }
+//    @GetMapping("/car/{vin}")
+//    public String vehicleInfo(@PathVariable(value = "vin")int vin, Model model){
+//        Optional<Vehicle> vehicle = vehicleRepo.findById(vin);
+//        ArrayList<Vehicle> res = new ArrayList<>();
+//        vehicle.ifPresent(res::add);
+//        model.addAttribute("vehicle", res);
+//        return "car-detail";
+//    }
 
     @GetMapping("/car/{vin}/edit")
-    public String blogEdit(@PathVariable(value = "vin")int vin, Model model){
+    public String vehicleEdit(@PathVariable(value = "vin")int vin, Model model){
         if(!vehicleRepo.existsById(vin)) {
             return "redirect:/car";
         }
@@ -59,7 +61,7 @@ public class VehicleController {
     }
 
     @PostMapping("/car/{vin}/edit")
-    public String blogUpdate(@PathVariable(value = "vin") int vin, @RequestParam String number,
+    public String vehicleUpdate(@PathVariable(value = "vin") int vin, @RequestParam String number,
                              @RequestParam String category, Model model){
         Vehicle vehicle = vehicleRepo.findById(vin).orElseThrow();
         vehicle.setCategory(category);
@@ -69,7 +71,7 @@ public class VehicleController {
     }
 
     @PostMapping("/car/{vin}/remove")
-    public String blogDelete(@PathVariable(value = "vin")int vin){
+    public String vehicleDelete(@PathVariable(value = "vin") int vin){
         Vehicle vehicle = vehicleRepo.findById(vin).orElseThrow();
         vehicleRepo.delete(vehicle);
         return "redirect:/car";

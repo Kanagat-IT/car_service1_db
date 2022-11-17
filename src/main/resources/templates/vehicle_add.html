@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
     <style>
         body {
             background-color: floralwhite;
@@ -23,7 +23,7 @@
 <body>
 <h1 class="d-flex justify-content-center">Input Vehicle Info</h1>
 <div class="d-flex justify-content-center">
-    <form action="add_vehicle" method="post" id="form">
+    <form action="/add/vehicle" method="post" id="form">
         <div class="form-group col-md-14">
             Nick: <input type='text' name='nick' class="form-control"/>
         </div>
@@ -41,7 +41,6 @@
         </div>
         <div class="form-group col-md-14">
             Category: <select name="category" class="form-control">
-            <option>category</option>
             <option>Engine</option>
             <option>Transmission</option>
             <option>Chassis</option>

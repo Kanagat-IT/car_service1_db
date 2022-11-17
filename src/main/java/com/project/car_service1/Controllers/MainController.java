@@ -19,11 +19,4 @@ public class MainController {
         model.addAttribute("title", "MainPage");
         return "home";
     }
-
-    @GetMapping("/vehicle-list")
-    public String vehicleList(Model model) {
-        Iterable<Vehicle> vehicles = vehicleRepo.findAll();
-        model.addAttribute("vehicles", vehicles);
-        return "my_vehicle_list";
-    }
 }
