@@ -39,15 +39,6 @@ public class VehicleController {
         return "redirect:/car";
     }
 
-//    @GetMapping("/car/{vin}")
-//    public String vehicleInfo(@PathVariable(value = "vin")int vin, Model model){
-//        Optional<Vehicle> vehicle = vehicleRepo.findById(vin);
-//        ArrayList<Vehicle> res = new ArrayList<>();
-//        vehicle.ifPresent(res::add);
-//        model.addAttribute("vehicle", res);
-//        return "car-detail";
-//    }
-
     @GetMapping("/car/{vin}/edit")
     public String vehicleEdit(@PathVariable(value = "vin")int vin, Model model){
         if(!vehicleRepo.existsById(vin)) {
@@ -61,10 +52,11 @@ public class VehicleController {
     }
 
     @PostMapping("/car/{vin}/edit")
-    public String vehicleUpdate(@PathVariable(value = "vin") int vin, @RequestParam String number,
+    public String vehicleUpdate(@PathVariable(value = "vin") int vin, @RequestParam String number, @RequestParam String type,
                              @RequestParam String category, Model model){
         Vehicle vehicle = vehicleRepo.findById(vin).orElseThrow();
         vehicle.setCategory(category);
+        vehicle.setType(type);
         vehicle.setNumber(number);
         vehicleRepo.save(vehicle);
         return "redirect:/car";
